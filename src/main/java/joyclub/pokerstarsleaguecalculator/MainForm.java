@@ -21,35 +21,23 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTIscritti = new javax.swing.JTextField();
         jLPremiati = new javax.swing.JLabel();
-        jTRimasti = new javax.swing.JTextField();
         jLPunti = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jTIscritti = new javax.swing.JFormattedTextField();
+        jTRimasti = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PokerStars League Calculator");
-
-        jTIscritti.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
-        jTIscritti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTIscrittiActionPerformed(evt);
-            }
-        });
+        setResizable(false);
+        setSize(new java.awt.Dimension(263, 216));
 
         jLPremiati.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jLPremiati.setForeground(java.awt.Color.red);
         jLPremiati.setText("0");
-
-        jTRimasti.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
-        jTRimasti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTRimastiActionPerformed(evt);
-            }
-        });
 
         jLPunti.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jLPunti.setForeground(java.awt.Color.red);
@@ -63,45 +51,60 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel4.setText("Punti");
 
+        jTIscritti.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jTIscritti.setAutoscrolls(false);
+        jTIscritti.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        jTIscritti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTIscrittiActionPerformed(evt);
+            }
+        });
+
+        jTRimasti.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jTRimasti.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        jTRimasti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTRimastiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(21, 21, 21)
+                        .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
+                                .addGap(7, 7, 7)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLPunti)
                             .addComponent(jLPremiati)
-                            .addComponent(jTIscritti, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                            .addComponent(jTIscritti, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTIscritti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jTIscritti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLPremiati)
@@ -110,46 +113,11 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLPunti)
                     .addComponent(jLabel4))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
-        /*jTIscritti.addKeyListener(new KeyAdapter()
-            {
-                public void keyPressed(KeyEvent ke)
-                {
-                    if(!(ke.getKeyChar()==27||ke.getKeyChar()==65535))//this section will execute only when user is editing the JTextField
-                    {
-                        PuntiLeague aPunti=new PuntiLeague();
-                        String strIscritti= jTIscritti.getText();
-                        int iscritti=Integer.parseInt(strIscritti);
-                        int premiati=aPunti.aPremio(iscritti);
-                        String strPremiati=Integer.toString(premiati);
-                        jLPremiati.setText(strPremiati);
-                    }
-                }
-            });
-            */
-            /*jTRimasti.addKeyListener(new KeyAdapter()
-                {
-                    public void keyPressed(KeyEvent ke)
-                    {
-                        if(!(ke.getKeyChar()==27||ke.getKeyChar()==65535))//this section will execute only when user is editing the JTextField
-                        {
-                            PuntiLeague aPunti=new PuntiLeague();
-                            String strIscritti= jTIscritti.getText();
-                            int iscritti=Integer.parseInt(strIscritti);
-                            String strPosizione= jTRimasti.getText();
-                            int posizione=Integer.parseInt(strPosizione);
-                            double puntiAssegnati=aPunti.puntiAssegnati(iscritti,posizione);
-                            String strPuntiAssegnati=Double.toString(puntiAssegnati);
-                            jLPunti.setText(strPuntiAssegnati);
-                        }
-                    }
-                });
-                */
-
-                pack();
-            }// </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
     private void jTIscrittiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTIscrittiActionPerformed
         // TODO add your handling code here:
@@ -158,7 +126,7 @@ public class MainForm extends javax.swing.JFrame {
         int iscritti = Integer.parseInt(strIscritti);
         int premiati = aPunti.aPremio(iscritti);
         String strPremiati = Integer.toString(premiati);
-        jLPremiati.setText(strPremiati);
+        jLPremiati.setText(strPremiati);        
     }//GEN-LAST:event_jTIscrittiActionPerformed
 
     private void jTRimastiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTRimastiActionPerformed
@@ -174,7 +142,7 @@ public class MainForm extends javax.swing.JFrame {
             String strPuntiAssegnati = Double.toString(puntiAssegnati);
             jLPunti.setText(strPuntiAssegnati);
         }
-        else jLPunti.setText("0");
+        else jLPunti.setText("0");        
     }//GEN-LAST:event_jTRimastiActionPerformed
 
     /**
@@ -235,7 +203,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTIscritti;
-    private javax.swing.JTextField jTRimasti;
+    private javax.swing.JFormattedTextField jTIscritti;
+    private javax.swing.JFormattedTextField jTRimasti;
     // End of variables declaration//GEN-END:variables
 }
