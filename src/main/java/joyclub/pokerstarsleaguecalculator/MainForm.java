@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package joyclub.pokerstarsleaguecalculator;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyListener;
-
 /**
  *
  * @author nicola
@@ -37,6 +27,8 @@ public class MainForm extends javax.swing.JFrame {
         jLPunti = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PokerStars League Calculator");
@@ -50,7 +42,7 @@ public class MainForm extends javax.swing.JFrame {
 
         jLPremiati.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jLPremiati.setForeground(java.awt.Color.red);
-        jLPremiati.setText("A premio");
+        jLPremiati.setText("0");
 
         jTRimasti.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jTRimasti.addActionListener(new java.awt.event.ActionListener() {
@@ -61,27 +53,41 @@ public class MainForm extends javax.swing.JFrame {
 
         jLPunti.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jLPunti.setForeground(java.awt.Color.red);
-        jLPunti.setText("Punti");
+        jLPunti.setText("0");
 
         jLabel1.setText("Iscritti");
 
         jLabel2.setText("Posizione");
+
+        jLabel3.setText("A Premio");
+
+        jLabel4.setText("Punti");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLPunti)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLPremiati)
-                        .addComponent(jTIscritti)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jLabel1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLPunti)
+                            .addComponent(jLPremiati)
+                            .addComponent(jTIscritti, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
@@ -93,14 +99,18 @@ public class MainForm extends javax.swing.JFrame {
                     .addComponent(jTIscritti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLPremiati)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLPunti)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLPremiati)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLPunti)
+                    .addComponent(jLabel4))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         /*jTIscritti.addKeyListener(new KeyAdapter()
@@ -143,28 +153,28 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jTIscrittiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTIscrittiActionPerformed
         // TODO add your handling code here:
-        PuntiLeague aPunti=new PuntiLeague();
-        String strIscritti= jTIscritti.getText();
-        int iscritti=Integer.parseInt(strIscritti);
-        int premiati=aPunti.aPremio(iscritti);
-        String strPremiati=Integer.toString(premiati);
+        PuntiLeague aPunti = new PuntiLeague();
+        String strIscritti = jTIscritti.getText();
+        int iscritti = Integer.parseInt(strIscritti);
+        int premiati = aPunti.aPremio(iscritti);
+        String strPremiati = Integer.toString(premiati);
         jLPremiati.setText(strPremiati);
     }//GEN-LAST:event_jTIscrittiActionPerformed
 
     private void jTRimastiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTRimastiActionPerformed
         // TODO add your handling code here:
-        PuntiLeague aPunti=new PuntiLeague();
-        String strIscritti= jTIscritti.getText();
-        int iscritti=Integer.parseInt(strIscritti);
-        int premiati=aPunti.aPremio(iscritti);
-        String strPosizione= jTRimasti.getText();
-        int posizione=Integer.parseInt(strPosizione);
-        
-        if(posizione <= premiati){
-        double puntiAssegnati=aPunti.puntiAssegnati(iscritti,posizione);
-        String strPuntiAssegnati=Double.toString(puntiAssegnati);
-        jLPunti.setText(strPuntiAssegnati);
+        PuntiLeague aPunti = new PuntiLeague();
+        String strIscritti = jTIscritti.getText();
+        int iscritti = Integer.parseInt(strIscritti);
+        int premiati = aPunti.aPremio(iscritti);
+        String strPosizione = jTRimasti.getText();
+        int posizione = Integer.parseInt(strPosizione);
+        if (posizione <= premiati) {
+            double puntiAssegnati = aPunti.puntiAssegnati(iscritti, posizione);
+            String strPuntiAssegnati = Double.toString(puntiAssegnati);
+            jLPunti.setText(strPuntiAssegnati);
         }
+        else jLPunti.setText("0");
     }//GEN-LAST:event_jTRimastiActionPerformed
 
     /**
@@ -203,17 +213,17 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     public class PuntiLeague {
-        
+
         int premiati;
         double puntiAssegnati;
 
         int aPremio(int iscritti) {
-            premiati=(iscritti*15)/100;
+            premiati = (iscritti * 15) / 100;
             return premiati;
         }
-        
-        double puntiAssegnati(int iscritti,int posizione){
-            puntiAssegnati=10*(Math.sqrt(iscritti)/Math.sqrt(posizione));
+
+        double puntiAssegnati(int iscritti, int posizione) {
+            puntiAssegnati = 10 * (Math.sqrt(iscritti) / Math.sqrt(posizione));
             return puntiAssegnati;
         }
     }
@@ -223,6 +233,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLPunti;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTIscritti;
     private javax.swing.JTextField jTRimasti;
     // End of variables declaration//GEN-END:variables
