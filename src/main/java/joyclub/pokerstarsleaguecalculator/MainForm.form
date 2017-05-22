@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="PokerStars League Calculator"/>
@@ -75,6 +75,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTIscrittiActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="/*jTIscritti.addKeyListener(new KeyAdapter()&#xa;    {&#xa;        public void keyPressed(KeyEvent ke)&#xa;        {&#xa;            if(!(ke.getKeyChar()==27||ke.getKeyChar()==65535))//this section will execute only when user is editing the JTextField&#xa;            {&#xa;                PuntiLeague aPunti=new PuntiLeague();&#xa;                String strIscritti= jTIscritti.getText();&#xa;                int iscritti=Integer.parseInt(strIscritti);&#xa;                int premiati=aPunti.aPremio(iscritti);&#xa;                String strPremiati=Integer.toString(premiati);&#xa;                jLPremiati.setText(strPremiati);&#xa;            }&#xa;        }&#xa;    });&#xa;*/"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLPremiati">
       <Properties>
@@ -96,6 +99,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTRimastiActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="/*jTRimasti.addKeyListener(new KeyAdapter()&#xa;    {&#xa;        public void keyPressed(KeyEvent ke)&#xa;        {&#xa;            if(!(ke.getKeyChar()==27||ke.getKeyChar()==65535))//this section will execute only when user is editing the JTextField&#xa;            {&#xa;                PuntiLeague aPunti=new PuntiLeague();&#xa;                String strIscritti= jTIscritti.getText();&#xa;                int iscritti=Integer.parseInt(strIscritti);&#xa;                String strPosizione= jTRimasti.getText();&#xa;                int posizione=Integer.parseInt(strPosizione);&#xa;                double puntiAssegnati=aPunti.puntiAssegnati(iscritti,posizione);&#xa;                String strPuntiAssegnati=Double.toString(puntiAssegnati);&#xa;                jLPunti.setText(strPuntiAssegnati);&#xa;            }&#xa;        }&#xa;    });&#xa;*/"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLPunti">
       <Properties>

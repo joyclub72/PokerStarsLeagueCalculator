@@ -5,6 +5,10 @@
  */
 package joyclub.pokerstarsleaguecalculator;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyListener;
+
 /**
  *
  * @author nicola
@@ -99,8 +103,43 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+        /*jTIscritti.addKeyListener(new KeyAdapter()
+            {
+                public void keyPressed(KeyEvent ke)
+                {
+                    if(!(ke.getKeyChar()==27||ke.getKeyChar()==65535))//this section will execute only when user is editing the JTextField
+                    {
+                        PuntiLeague aPunti=new PuntiLeague();
+                        String strIscritti= jTIscritti.getText();
+                        int iscritti=Integer.parseInt(strIscritti);
+                        int premiati=aPunti.aPremio(iscritti);
+                        String strPremiati=Integer.toString(premiati);
+                        jLPremiati.setText(strPremiati);
+                    }
+                }
+            });
+            */
+            /*jTRimasti.addKeyListener(new KeyAdapter()
+                {
+                    public void keyPressed(KeyEvent ke)
+                    {
+                        if(!(ke.getKeyChar()==27||ke.getKeyChar()==65535))//this section will execute only when user is editing the JTextField
+                        {
+                            PuntiLeague aPunti=new PuntiLeague();
+                            String strIscritti= jTIscritti.getText();
+                            int iscritti=Integer.parseInt(strIscritti);
+                            String strPosizione= jTRimasti.getText();
+                            int posizione=Integer.parseInt(strPosizione);
+                            double puntiAssegnati=aPunti.puntiAssegnati(iscritti,posizione);
+                            String strPuntiAssegnati=Double.toString(puntiAssegnati);
+                            jLPunti.setText(strPuntiAssegnati);
+                        }
+                    }
+                });
+                */
+
+                pack();
+            }// </editor-fold>//GEN-END:initComponents
 
     private void jTIscrittiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTIscrittiActionPerformed
         // TODO add your handling code here:
@@ -117,11 +156,15 @@ public class MainForm extends javax.swing.JFrame {
         PuntiLeague aPunti=new PuntiLeague();
         String strIscritti= jTIscritti.getText();
         int iscritti=Integer.parseInt(strIscritti);
+        int premiati=aPunti.aPremio(iscritti);
         String strPosizione= jTRimasti.getText();
         int posizione=Integer.parseInt(strPosizione);
+        
+        if(posizione <= premiati){
         double puntiAssegnati=aPunti.puntiAssegnati(iscritti,posizione);
         String strPuntiAssegnati=Double.toString(puntiAssegnati);
         jLPunti.setText(strPuntiAssegnati);
+        }
     }//GEN-LAST:event_jTRimastiActionPerformed
 
     /**
