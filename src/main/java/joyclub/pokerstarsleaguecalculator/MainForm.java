@@ -29,6 +29,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTIscritti = new javax.swing.JFormattedTextField();
         jTRimasti = new javax.swing.JFormattedTextField();
+        jLPercentuale = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PokerStars League Calculator");
@@ -68,17 +69,23 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        jLPercentuale.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        jLPercentuale.setForeground(java.awt.Color.red);
+        jLPercentuale.setText("%");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(21, 21, 21)
-                        .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLPercentuale))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -92,7 +99,7 @@ public class MainForm extends javax.swing.JFrame {
                             .addComponent(jLPunti)
                             .addComponent(jLPremiati)
                             .addComponent(jTIscritti, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +111,8 @@ public class MainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLPercentuale))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLPremiati)
@@ -137,9 +145,12 @@ public class MainForm extends javax.swing.JFrame {
         int premiati = aPunti.aPremio(iscritti);
         String strPosizione = jTRimasti.getText();
         int posizione = Integer.parseInt(strPosizione);
+        double percentuale = aPunti.percentuale(iscritti, posizione);
+        String strPercentuale = String.format("%.4g%n", percentuale)+"%";
+        jLPercentuale.setText(strPercentuale);        
         if (posizione <= premiati) {
             double puntiAssegnati = aPunti.puntiAssegnati(iscritti, posizione);
-            String strPuntiAssegnati = Double.toString(puntiAssegnati);
+            String strPuntiAssegnati = String.format("%.4g%n", puntiAssegnati);
             jLPunti.setText(strPuntiAssegnati);
         }
         else jLPunti.setText("0");        
@@ -184,6 +195,7 @@ public class MainForm extends javax.swing.JFrame {
 
         int premiati;
         double puntiAssegnati;
+        double percentuale;
 
         int aPremio(int iscritti) {
             premiati = (iscritti * 15) / 100;
@@ -194,9 +206,14 @@ public class MainForm extends javax.swing.JFrame {
             puntiAssegnati = 10 * (Math.sqrt(iscritti) / Math.sqrt(posizione));
             return puntiAssegnati;
         }
+        double percentuale (int iscritti, int posizione){
+            percentuale = ((double) posizione*100)/(double) iscritti;
+            return percentuale;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLPercentuale;
     private javax.swing.JLabel jLPremiati;
     private javax.swing.JLabel jLPunti;
     private javax.swing.JLabel jLabel1;
