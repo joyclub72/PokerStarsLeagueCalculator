@@ -1,4 +1,8 @@
 package joyclub.pokerstarsleaguecalculator;
+
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 /**
  *
  * @author nicola
@@ -56,22 +60,12 @@ public class MainForm extends javax.swing.JFrame {
 
         jTIscritti.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         jTIscritti.setAutoscrolls(false);
-        jTIscritti.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
-        jTIscritti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTIscrittiActionPerformed(evt);
-            }
-        });
+        jTIscritti.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
 
         jTRimasti.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jTRimasti.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
-        jTRimasti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTRimastiActionPerformed(evt);
-            }
-        });
+        jTRimasti.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
 
-        jLPercentuale.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        jLPercentuale.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLPercentuale.setForeground(java.awt.Color.red);
         jLPercentuale.setText("%");
 
@@ -88,12 +82,12 @@ public class MainForm extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(jTIscritti, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTIscritti, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTRimasti, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLPercentuale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -109,7 +103,7 @@ public class MainForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
@@ -121,41 +115,67 @@ public class MainForm extends javax.swing.JFrame {
                     .addComponent(jTIscritti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLPercentuale)
                     .addComponent(jLPremiati)
-                    .addComponent(jLPunti))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLPunti)))
         );
+
+        jTIscritti.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                premiati();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                premiati();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                premiati();
+            }
+
+            public void premiati() {
+                if (!jTIscritti.getText().isEmpty()) {
+                    PuntiLeague aPunti = new PuntiLeague();
+                    String strIscritti = jTIscritti.getText();
+                    int iscritti = Integer.parseInt(strIscritti);
+                    int premiati = aPunti.aPremio(iscritti);
+                    String strPremiati = Integer.toString(premiati);
+                    jLPremiati.setText(strPremiati);
+                }
+                else jLPremiati.setText("0");
+            }
+        });
+        jTRimasti.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                punti();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                punti();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                punti();
+            }
+
+            public void punti() {
+                if (!jTRimasti.getText().isEmpty()) {
+                    PuntiLeague aPunti = new PuntiLeague();
+                    String strIscritti = jTIscritti.getText();
+                    int iscritti = Integer.parseInt(strIscritti);
+                    int premiati = aPunti.aPremio(iscritti);
+                    String strPosizione = jTRimasti.getText();
+                    int posizione = Integer.parseInt(strPosizione);
+                    double percentuale = aPunti.percentuale(iscritti, posizione);
+                    String strPercentuale = String.format("%.4g%n", percentuale)+"%";
+                    jLPercentuale.setText(strPercentuale);
+                    if (posizione <= premiati) {
+                        double puntiAssegnati = aPunti.puntiAssegnati(iscritti, posizione);
+                        String strPuntiAssegnati = String.format("%.4g%n", puntiAssegnati);
+                        jLPunti.setText(strPuntiAssegnati);
+                    }
+                    else jLPunti.setText("0");
+                }
+                else jLPunti.setText("0");
+            }
+        });
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTIscrittiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTIscrittiActionPerformed
-        // TODO add your handling code here:
-        PuntiLeague aPunti = new PuntiLeague();
-        String strIscritti = jTIscritti.getText();
-        int iscritti = Integer.parseInt(strIscritti);
-        int premiati = aPunti.aPremio(iscritti);
-        String strPremiati = Integer.toString(premiati);
-        jLPremiati.setText(strPremiati);        
-    }//GEN-LAST:event_jTIscrittiActionPerformed
-
-    private void jTRimastiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTRimastiActionPerformed
-        // TODO add your handling code here:
-        PuntiLeague aPunti = new PuntiLeague();
-        String strIscritti = jTIscritti.getText();
-        int iscritti = Integer.parseInt(strIscritti);
-        int premiati = aPunti.aPremio(iscritti);
-        String strPosizione = jTRimasti.getText();
-        int posizione = Integer.parseInt(strPosizione);
-        double percentuale = aPunti.percentuale(iscritti, posizione);
-        String strPercentuale = String.format("%.4g%n", percentuale)+"%";
-        jLPercentuale.setText(strPercentuale);        
-        if (posizione <= premiati) {
-            double puntiAssegnati = aPunti.puntiAssegnati(iscritti, posizione);
-            String strPuntiAssegnati = String.format("%.4g%n", puntiAssegnati);
-            jLPunti.setText(strPuntiAssegnati);
-        }
-        else jLPunti.setText("0");        
-    }//GEN-LAST:event_jTRimastiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,8 +227,9 @@ public class MainForm extends javax.swing.JFrame {
             puntiAssegnati = 10 * (Math.sqrt(iscritti) / Math.sqrt(posizione));
             return puntiAssegnati;
         }
-        double percentuale (int iscritti, int posizione){
-            percentuale = ((double) posizione*100)/(double) iscritti;
+
+        double percentuale(int iscritti, int posizione) {
+            percentuale = ((double) posizione * 100) / (double) iscritti;
             return percentuale;
         }
     }
