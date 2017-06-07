@@ -206,33 +206,13 @@ public class MainForm extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new MainForm().setVisible(true);
             }
         });
     }
 
-    public class PuntiLeague {
-
-        int premiati;
-        double puntiAssegnati;
-        double percentuale;
-
-        int aPremio(int iscritti) {
-            premiati = (iscritti * 15) / 100;
-            return premiati;
-        }
-
-        double puntiAssegnati(int iscritti, int posizione) {
-            puntiAssegnati = 10 * (Math.sqrt(iscritti) / Math.sqrt(posizione));
-            return puntiAssegnati;
-        }
-
-        double percentuale(int iscritti, int posizione) {
-            percentuale = ((double) posizione * 100) / (double) iscritti;
-            return percentuale;
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLPercentuale;
